@@ -1,0 +1,369 @@
+{
+  "config": {
+    "default_doc_buffer_min": 10,
+    "gym_turnover_min": 5,
+    "assist_pool_capacity": 1,
+    "max_overtime_min": 120,
+    "priority_weight": {
+      "1": 1,
+      "2": 2,
+      "3": 4,
+      "4": 7,
+      "5": 10
+    }
+  },
+  "weights": {
+    "late": 1,
+    "overtime": 20,
+    "travel": 3
+  },
+  "therapists": [
+    {
+      "therapist_id": "PT1",
+      "name": "Alice",
+      "skills": [
+        "ortho"
+      ],
+      "home_unit": "4E",
+      "shift_start": 420,
+      "shift_end": 930,
+      "max_sessions_per_day": 10,
+      "breaks": [
+        {
+          "start": 690,
+          "end": 720
+        }
+      ]
+    },
+    {
+      "therapist_id": "PT2",
+      "name": "Ben",
+      "skills": [
+        "ortho"
+      ],
+      "home_unit": "FLOAT",
+      "shift_start": 480,
+      "shift_end": 990,
+      "max_sessions_per_day": 10,
+      "breaks": [
+        {
+          "start": 750,
+          "end": 780
+        }
+      ]
+    },
+    {
+      "therapist_id": "PT3",
+      "name": "Cara",
+      "skills": [
+        "ortho",
+        "neuro"
+      ],
+      "home_unit": "4W",
+      "shift_start": 540,
+      "shift_end": 1020,
+      "max_sessions_per_day": 10,
+      "breaks": [
+        {
+          "start": 780,
+          "end": 810
+        }
+      ]
+    }
+  ],
+  "patients": [
+    {
+      "patient_id": "P1",
+      "name": "John",
+      "unit": "4E",
+      "room": "412",
+      "surgery_type": "TKA",
+      "post_op_day": 1,
+      "readiness_status": "READY",
+      "needs_assist": false
+    },
+    {
+      "patient_id": "P2",
+      "name": "Maria",
+      "unit": "4E",
+      "room": "418",
+      "surgery_type": "THA",
+      "post_op_day": 0,
+      "readiness_status": "READY",
+      "needs_assist": false
+    },
+    {
+      "patient_id": "P3",
+      "name": "Sam",
+      "unit": "4W",
+      "room": "405",
+      "surgery_type": "SPINE",
+      "post_op_day": 1,
+      "readiness_status": "READY",
+      "needs_assist": false
+    },
+    {
+      "patient_id": "P4",
+      "name": "Aisha",
+      "unit": "4E",
+      "room": "420",
+      "surgery_type": "SHOULDER",
+      "post_op_day": 1,
+      "readiness_status": "READY",
+      "needs_assist": false
+    },
+    {
+      "patient_id": "P5",
+      "name": "Leo",
+      "unit": "4W",
+      "room": "401",
+      "surgery_type": "STROKE",
+      "post_op_day": 3,
+      "readiness_status": "READY",
+      "needs_assist": false
+    },
+    {
+      "patient_id": "P6",
+      "name": "Kim",
+      "unit": "4E",
+      "room": "415",
+      "surgery_type": "MED",
+      "post_op_day": 0,
+      "readiness_status": "READY",
+      "needs_assist": false
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "GYM_ROOM_1",
+      "resource_type": "GYM_ROOM",
+      "name": "PT Gym",
+      "capacity": 1,
+      "availability": [
+        {
+          "start": 480,
+          "end": 720
+        },
+        {
+          "start": 780,
+          "end": 960
+        }
+      ]
+    },
+    {
+      "resource_id": "ASSIST_POOL",
+      "resource_type": "ASSIST_POOL",
+      "name": "2nd staff assist pool",
+      "capacity": 1,
+      "availability": [
+        {
+          "start": 420,
+          "end": 1020
+        }
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "T1",
+      "patient_id": "P1",
+      "service_date": "2025-12-12",
+      "session_number": 1,
+      "face_dur_min": 35,
+      "doc_buffer_min": 10,
+      "priority": 5,
+      "must_schedule": true,
+      "readiness": "READY",
+      "required_skills": [
+        "ortho"
+      ],
+      "allowed_locations": [
+        "GYM",
+        "BEDSIDE"
+      ],
+      "allowed_windows": [
+        {
+          "start": 540,
+          "end": 690
+        }
+      ],
+      "preferred_time": 590,
+      "requires_assist": false,
+      "required_resources": [
+        "GYM_ROOM_1"
+      ]
+    },
+    {
+      "task_id": "T2",
+      "patient_id": "P1",
+      "service_date": "2025-12-12",
+      "session_number": 2,
+      "face_dur_min": 35,
+      "doc_buffer_min": 10,
+      "priority": 5,
+      "must_schedule": true,
+      "readiness": "READY",
+      "required_skills": [
+        "ortho"
+      ],
+      "allowed_locations": [
+        "GYM",
+        "BEDSIDE"
+      ],
+      "allowed_windows": [
+        {
+          "start": 840,
+          "end": 960
+        }
+      ],
+      "preferred_time": 840,
+      "requires_assist": false,
+      "required_resources": [
+        "GYM_ROOM_1"
+      ]
+    },
+    {
+      "task_id": "T3",
+      "patient_id": "P2",
+      "service_date": "2025-12-12",
+      "session_number": 1,
+      "face_dur_min": 25,
+      "doc_buffer_min": 10,
+      "priority": 4,
+      "must_schedule": true,
+      "readiness": "READY",
+      "required_skills": [
+        "ortho"
+      ],
+      "allowed_locations": [
+        "BEDSIDE"
+      ],
+      "allowed_windows": [
+        {
+          "start": 780,
+          "end": 960
+        }
+      ],
+      "preferred_time": 790,
+      "requires_assist": false,
+      "required_resources": []
+    },
+    {
+      "task_id": "T4",
+      "patient_id": "P3",
+      "service_date": "2025-12-12",
+      "session_number": 1,
+      "face_dur_min": 45,
+      "doc_buffer_min": 10,
+      "priority": 4,
+      "must_schedule": true,
+      "readiness": "READY",
+      "required_skills": [
+        "ortho"
+      ],
+      "allowed_locations": [
+        "BEDSIDE"
+      ],
+      "allowed_windows": [
+        {
+          "start": 630,
+          "end": 720
+        }
+      ],
+      "preferred_time": 640,
+      "requires_assist": false,
+      "required_resources": []
+    },
+    {
+      "task_id": "T5",
+      "patient_id": "P4",
+      "service_date": "2025-12-12",
+      "session_number": 1,
+      "face_dur_min": 30,
+      "doc_buffer_min": 10,
+      "priority": 3,
+      "must_schedule": true,
+      "readiness": "READY",
+      "required_skills": [
+        "ortho"
+      ],
+      "allowed_locations": [
+        "BEDSIDE"
+      ],
+      "allowed_windows": [
+        {
+          "start": 420,
+          "end": 690
+        },
+        {
+          "start": 780,
+          "end": 930
+        }
+      ],
+      "preferred_time": 435,
+      "requires_assist": false,
+      "required_resources": []
+    },
+    {
+      "task_id": "T6",
+      "patient_id": "P5",
+      "service_date": "2025-12-12",
+      "session_number": 1,
+      "face_dur_min": 45,
+      "doc_buffer_min": 10,
+      "priority": 5,
+      "must_schedule": true,
+      "readiness": "READY",
+      "required_skills": [
+        "neuro"
+      ],
+      "allowed_locations": [
+        "GYM"
+      ],
+      "allowed_windows": [
+        {
+          "start": 540,
+          "end": 720
+        }
+      ],
+      "preferred_time": 540,
+      "requires_assist": false,
+      "required_resources": [
+        "GYM_ROOM_1"
+      ]
+    },
+    {
+      "task_id": "T7",
+      "patient_id": "P6",
+      "service_date": "2025-12-12",
+      "session_number": 1,
+      "face_dur_min": 30,
+      "doc_buffer_min": 10,
+      "priority": 2,
+      "must_schedule": true,
+      "readiness": "READY",
+      "required_skills": [
+        "ortho"
+      ],
+      "allowed_locations": [
+        "BEDSIDE"
+      ],
+      "allowed_windows": [
+        {
+          "start": 450,
+          "end": 660
+        }
+      ],
+      "preferred_time": 475,
+      "requires_assist": false,
+      "required_resources": []
+    }
+  ],
+  "separations": [
+    {
+      "task_a": "T1",
+      "task_b": "T2",
+      "min_gap_min": 240
+    }
+  ]
+}
